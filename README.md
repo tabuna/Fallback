@@ -1,17 +1,10 @@
-# Actions for failback
+# Actions for Failback
 
-
-
-<a href="https://travis-ci.org/tabuna/failback/"><img src="https://travis-ci.org/tabuna/failback.svg?branch=master"></a>
-<a href="https://packagist.org/packages/tabuna/failback"><img alt="Packagist" src="https://img.shields.io/packagist/dt/tabuna/failback.svg"></a>
-<a href="https://packagist.org/packages/tabuna/failback"><img alt="Packagist Version" src="https://img.shields.io/packagist/v/tabuna/failback.svg"></a>
-
-
-This is a small wrapper for creating a branch of inaccessibility. 
+Actions for Failback is a small wrapper that allows you to create a branch of inaccessibility.
 
 ## Install
 
-Via Composer
+You can install the package via Composer by running the following command:
 
 ``` bash
 $ composer require tabuna/failback
@@ -19,8 +12,10 @@ $ composer require tabuna/failback
 
 ## Usage
 
+#### Default Value:
 
-Default Value:
+You can use the following code to create an action with a default value:
+
 ```php
 use Tabuna\FailBack\Action;
 
@@ -29,13 +24,16 @@ $result = Action::make(function () {
     throw new \Exception();
 }, 'default')->run();
 
-// or short helper
-$result = failBack(function (){
+// or using the short helper
+$result = failBack(function () {
     throw new \Exception();
 }, 'default')();
 ```
 
-Fallback Features:
+#### Fallback Features:
+
+You can also define multiple fallback actions using the `fail` method:
+
 ```php
 // $result = true;
 $result = failBack(function () {
@@ -47,8 +45,10 @@ $result = failBack(function () {
 })();
 ```
 
+#### Using Classes:
 
-As classes:
+To define a fallback using a class, you can create an anonymous class with an `__invoke` method:
+
 ```php
 $class = new class {
 
@@ -65,12 +65,6 @@ $class = new class {
 $result = failBack(function () {
     throw new Exception();
 })->fail($class)->run();
-```
-
-## Testing
-
-``` bash
-$ composer test
 ```
 
 ## License
