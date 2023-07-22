@@ -157,7 +157,6 @@ class ActionTest extends TestCase
     public function testInvokeAction(): void
     {
         $class = new class {
-
             /**
              * @return bool
              */
