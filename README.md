@@ -1,10 +1,10 @@
 # Actions for Failback
 
-Actions for Failback is a small wrapper that allows you to create a branch of inaccessibility.
+Actions for Failback is a lightweight wrapper that empowers you to handle unavailability gracefully.
 
-## Install
+## Installation
 
-You can install the package via Composer by running the following command:
+To install the package, you can use Composer. Simply run the following command:
 
 ``` bash
 $ composer require tabuna/failback
@@ -12,9 +12,9 @@ $ composer require tabuna/failback
 
 ## Usage
 
-#### Default Value:
+#### Setting a Default Value:
 
-You can use the following code to create an action with a default value:
+You can create an action with a default value using the following code:
 
 ```php
 use Tabuna\FailBack\Action;
@@ -24,15 +24,15 @@ $result = Action::make(function () {
     throw new \Exception();
 }, 'default')->run();
 
-// or using the short helper
+// Alternatively, you can use the short helper
 $result = failBack(function () {
     throw new \Exception();
 }, 'default')();
 ```
 
-#### Fallback Features:
+#### Adding Fallback Actions:
 
-You can also define multiple fallback actions using the `fail` method:
+You can define multiple fallback actions using the `fail` method:
 
 ```php
 // $result = true;
@@ -45,9 +45,9 @@ $result = failBack(function () {
 })();
 ```
 
-#### Using Classes:
+#### Utilizing Classes:
 
-To define a fallback using a class, you can create an anonymous class with an `__invoke` method:
+To specify a fallback action using a class, create an anonymous class with an `__invoke` method:
 
 ```php
 $class = new class {
